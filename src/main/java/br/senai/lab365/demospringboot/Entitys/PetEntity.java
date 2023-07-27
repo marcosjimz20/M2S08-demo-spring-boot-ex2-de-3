@@ -1,18 +1,39 @@
 package br.senai.lab365.demospringboot.Entitys;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class PetEntity {
 // Atributos
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String especie;
     private String raca;
     private double peso;
 
+// Constructor
+    public PetEntity() {
+    }
+
+    public PetEntity(Long id, String nome, String especie, String raca, double peso) {
+        this.id = id;
+        this.nome = nome;
+        this.especie = especie;
+        this.raca = raca;
+        this.peso = peso;
+    }
+
+
 // Getters e Setters
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

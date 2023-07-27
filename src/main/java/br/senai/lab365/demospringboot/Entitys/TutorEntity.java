@@ -1,19 +1,40 @@
 package br.senai.lab365.demospringboot.Entitys;
 
+import jakarta.persistence.*;
+
+@Entity
 public class TutorEntity {
 // Atributos
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nomeTutor;
-    private String Rg;
-    private String Telefone;
-    private String Email;
+    private String rg;
+    private String telefone;
+    private String email;
+    @OneToOne
+    private PetEntity pet;
+
+// Constructor
+    public TutorEntity() {
+    }
+
+    public TutorEntity(Long id, String nomeTutor, String rg, String telefone, String email, PetEntity pet) {
+        this.id = id;
+        this.nomeTutor = nomeTutor;
+        this.rg = rg;
+        this.telefone = telefone;
+        this.email = email;
+        this.pet = pet;
+    }
 
 // Getters e Setters
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -25,30 +46,37 @@ public class TutorEntity {
         this.nomeTutor = nomeTutor;
     }
 
-    public String getRG() {
-        return Rg;
+    public String getRg() {
+        return rg;
     }
 
-    public void setRG(String RG) {
-        this.Rg = Rg;
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 
     public String getTelefone() {
-        return Telefone;
+        return telefone;
     }
 
     public void setTelefone(String telefone) {
-        Telefone = telefone;
+        this.telefone = telefone;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
+    public PetEntity getPet() {
+        return pet;
+    }
+
+    public void setPet(PetEntity pet) {
+        this.pet = pet;
+    }
 
 // FIM da classe TutorEntity
 }
